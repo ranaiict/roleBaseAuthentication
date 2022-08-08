@@ -19,14 +19,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class AppController {
-    @Autowired
-    private RoleRepository roleRepo;
-    @Autowired
-    private UserRepository userRepo;
+    private final RoleRepository roleRepo;
+    private final UserRepository userRepo;
     private final StudentService studentService;
-
-    public AppController(StudentService studentService) {
+    public AppController(StudentService studentService, RoleRepository roleRepo, UserRepository userRepo) {
         this.studentService = studentService;
+        this.roleRepo = roleRepo;
+        this.userRepo = userRepo;
     }
 
     @GetMapping("")
